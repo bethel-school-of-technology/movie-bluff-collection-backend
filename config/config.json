@@ -2,25 +2,22 @@
   "development": {
     "username": "root",
     "password": "Password1!",
-    "database": "movie-buff-collection",
+    "database": "movie-buff-database",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Password1!",
-    "database": "movie-buff-collection",
+    "password": null,
+    "database": "movie-buff-database",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "Password1!",
-    "database": "movie-buff-collection",
+    "password": null,
+    "database": "movie-buff-database",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "dialect": "mysql"
   }
 }
