@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true
     },
-    
     firstName: {
       type: DataTypes.STRING(45),
       allowNull: false,
@@ -32,12 +31,6 @@ module.exports = (sequelize, DataTypes) => {
   });
 //  users.associate = function(models) {
     // associations can be defined here
-
-  //  there will also be an id but it is NOT NULL AUTO_INCREMENT PRIMARY KEY  
-  // firstName
-  // lastName
-  // email
-  // password
 //  };
   return user;
 };
