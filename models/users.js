@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     firstName: {
       type: DataTypes.STRING(45),
       allowNull: false,
-  }, 
+    },
     lastName: {
-    type: DataTypes.STRING(45),
-    allowNull: false,
-  }, 
+      type: DataTypes.STRING(45),
+      allowNull: false,
+    },
     email: {
       type: DataTypes.STRING(45),
       allowNull: false,
@@ -23,14 +23,30 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(45),
       allowNull: false,
     },
-    last_update: {
+    role: {
+      type: DataTypes.ENUM,
+      values: ['user', 'admin', 'disabled']
+    },
+    created_at: {
       type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
-    } 
+      allowNull: false
+    },
+    updated_at: DataTypes.DATE,
+    deleted_at: DataTypes.DATE
   });
-//  users.associate = function(models) {
+
+  //I picked this convention up from https://lorenstewart.me/2016/09/12/sequelize-table-associations-joins/
+  // const db = {};
+
+  // db.Sequelize = Sequelize;
+  // db.sequelize = sequelize;
+
+  // db.users = require('../models/users.js')(sequelize, Sequelize);
+  
+  //There's more in the Read.me file in GitHub
+  
+  users.associate = function (models) {
     // associations can be defined here
-//  };
+  };
   return user;
 };

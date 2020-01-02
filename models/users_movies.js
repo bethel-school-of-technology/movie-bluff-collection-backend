@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     movies.associate = function (models) {
         // associations can be defined here
         // there will also be an id but it is NOT NULL AUTO_INCREMENT PRIMARY KEY
+        //information and tables from IMdb may include the following
         //title
         // director
         // yearReleased

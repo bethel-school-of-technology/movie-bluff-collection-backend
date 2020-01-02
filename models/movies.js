@@ -12,5 +12,8 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
         }
     });
+    movies.associate = function(models) {
+        // associations can be defined here
+      };
     return movies;
 };
