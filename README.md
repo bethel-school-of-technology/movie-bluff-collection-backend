@@ -6,7 +6,7 @@ making/using database-edits branch thanx, cw
 attempting to use MySQL
 
 20200102 by cw
-notes and code on associations for the database:
+notes and code on associations for the database: (best to be read in 'Raw' form)
 lines 12-121 modified from https://lorenstewart.me/2016/09/12/sequelize-table-associations-joins/
 
 Side note: Where I work, we have a convention of attaching all Sequelize models to a single db object and injecting this object into all routes and controllers. It's a convenient way to have access to everything. Using this convention, here's what the db.js file in the repo looks like: 
