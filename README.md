@@ -120,3 +120,47 @@ app.get('/users', (req, res) => {
     });
   });
 
+cw 20200104 added more code to routes/db.js lines 62-103
+  app.post('/users', (req, res) => {
+    const created_at = new Date();
+    const newUser = req.body.user;
+    db.users.create({
+      username: newUser.username,
+      role: newUser.role,
+      created_at: created_at
+    })
+      .then(user => {
+        res.json(user);
+      });
+  });
+
+  app.post('/movie', (req, res) => {
+    const created_at = new Date();
+    const newMovie = req.body.movie;
+    db.movies.create({
+      user_id: newMovie.user_id,
+      content: newMovie.content,
+      created_at: created_at
+    })
+      .then(movie => {
+        res.json(movie);
+      });
+  });
+
+  app.post('/users_movie', (req, res) => {
+    const created_at = new Date();
+    const newUsers_Movie = req.body.users_movie;
+    db.users_movies.create({
+      post_id: newUsers_Movie.post_id,
+      content: newUsers_Movie.content,
+      user_username: newUsers_Movie.user_username,
+      user_email: newUsers_Movie.user_email,
+      created_at: created_at
+    })
+      .then(users_movie => {
+        res.json(users_movie);
+      });
+  });
+
+};
+
