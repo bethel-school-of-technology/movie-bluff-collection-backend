@@ -14,20 +14,19 @@ router.get('/', function (req, res, next) {
                     .findAll({
                         where: { userId: user.userId, watchedList: true, Deleted: false }
                     })
-                    .then(userMovies => res.json(userMovies));
+                    .then(result => res.json(result));
             } else {
-                res.status(401);
-                res.json('Invalid authentication token');
+                res.status(401).json('Invalid authentication token');
             }
         });
     } else {
-        res.status(401);
-        res.json('Must be logged in');
+        res.status(401).json('Must be logged in');
     }
 });
 
 //save watched movies
 router.post('/', function (req, res, next) {
+    console.log(req.body);
     let token = req.cookies.jwt;
     if (token) {
         authService.verifyUser(token).then(user => {
@@ -42,25 +41,25 @@ router.post('/', function (req, res, next) {
                             wishList: req.body.wishList,
                         }
                     })
-                    .spread((result, created) => res.json('Continue'));
+                    .spread((result, created) => res.status(200).json('Successful'));
             } else {
-                res.status(401);
-                res.json('Sorry, please log in');
+                res.status(401).json('Sorry, please log in');
             }
         });
     } else {
-        res.status(401);
-        res.json('Must be logged in');
+        res.status(401).json('Must be logged in');
     }
 });
+
 //edit watched movies
 router.get('/:id', function (req, res, next) {
     let imdbId = (req.params.id);
     models.userMovies.findOne({ where: { imdbId: imdbId }, raw: true }).then(imdbId => {
         console.log(imdbId);
-        res.json(imdbId);
+        res.status(200).json(imbdId);
     });
 });
+
 //update watched movies
 router.put('/editWatched-movies/:id', function (req, res, next) {
     let token = req.cookies.jwt;
@@ -77,15 +76,13 @@ router.put('/editWatched-movies/:id', function (req, res, next) {
                             wishList: req.body.wishList
                         }
                     })
-                    .spread((result, created) => res.redirect('/watched-movies'));
+                    .spread((result, created) => res.status(200).json('Edit successful'));
             } else {
-                res.status(401);
-                res.json('Sorry, please log in');
+                res.status(401).json('Sorry, please log in');
             }
         });
     } else {
-        res.status(401);
-        res.json('Must be logged in');
+        res.status(401).json('Must be logged in');
     }
 
 });
@@ -95,9 +92,8 @@ router.put('/editWatched-movies/:id', function (req, res, next) {
     console.log(imdbId);
     models.userMovies
         .update(req.body, { where: { imdbId: imdbId } })
-        .then(result => res.json(result));
+        .then(() => res.status(200).json('Successful'));
 });
-
 
 //delete watched movies
 router.delete('/:id', function (req, res, next) {
@@ -109,9 +105,7 @@ router.delete('/:id', function (req, res, next) {
                 where: { imdbId: imdbId }
             }
         )
-    req.flash('success', 'Watched Movie deleted successfully! id = ' + req.params.id)
-        .then(result => res.json(result));
-    // .then(userMovies => res.json(userMovies));
-
+        .then(() => res.status(200).json('successful'));
 });
+
 module.exports = router;

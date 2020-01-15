@@ -14,16 +14,13 @@ router.get('/', function (req, res, next) {
                     .findAll({
                         where: { userId: user.userId, wishList: true, Deleted: false }
                     })
-                    .then(result => res.json(result)); 
-
+                    .then(result => res.json(result));
             } else {
-                res.status(401);
-                res.json('Invalid authentication token');
+                res.status(401).json('Invalid authentication token');
             }
         });
     } else {
-        res.status(401);
-        res.json('Must be logged in');
+        res.status(401).json('Must be logged in');
     }
 });
 
@@ -44,7 +41,7 @@ router.post('/', function (req, res, next) {
                             wishList: req.body.wishList
                         }
                     })
-                    .spread((result, created) => res.status(200).json('Successful')); //look at spread function
+                    .spread((result, created) => res.status(200).json('Successful'));
             } else {
                 res.status(401).json('Sorry, please log in');
             }
@@ -53,6 +50,7 @@ router.post('/', function (req, res, next) {
         res.status(401).json('Must be logged in');
     }
 });
+
 //edit list
 router.get('/:id', function (req, res, next) {
     let imdbId = (req.params.id);
@@ -61,6 +59,7 @@ router.get('/:id', function (req, res, next) {
         res.status(200).json(imbdId);
     });
 });
+
 //update list
 router.put('/editWish-list/:id', function (req, res, next) {
     let token = req.cookies.jwt;
@@ -79,13 +78,11 @@ router.put('/editWish-list/:id', function (req, res, next) {
                     })
                     .spread((result, created) => res.status(200).json('Edit successful'));
             } else {
-                res.status(401);
-                res.json('Sorry, please log in');
+                res.status(401).json('Sorry, please log in');
             }
         });
     } else {
-        res.status(401);
-        res.json('Must be logged in');
+        res.status(401).json('Must be logged in');
     }
 
 });
@@ -95,9 +92,8 @@ router.put('/editWish-list/:id', function (req, res, next) {
     console.log(imdbId);
     models.userMovies
         .update(req.body, { where: { imdbId: imdbId } })
-        .then(() => res.json('successful'));
+        .then(() => res.status(200).json('Successful'));
 });
-
 
 //delete list
 router.delete('/:id', function (req, res, next) {
@@ -109,8 +105,7 @@ router.delete('/:id', function (req, res, next) {
                 where: { imdbId: imdbId }
             }
         )
-        .then(() => res.json('successful'));
-       
+        .then(() => res.status(200).json('successful'));
 });
 
 module.exports = router;
