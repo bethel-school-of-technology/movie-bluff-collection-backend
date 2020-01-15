@@ -1,0 +1,31 @@
+<h1>{{title}}</h1>
+
+<h2>Welcome {{firstName}} {{lastName}}</h2>
+
+<p>{{email}}</p>
+
+<ul>
+    {{#each owned-movies}}
+    <li>
+        <a href="/owned-movies/{{userId}}">
+        </a>
+    </li>
+    {{/each}}
+</ul>
+
+<ul>
+    {{#each watched-movies}}
+    <li>
+        <a href="/watched-movies/{{userId}}">
+        </a>
+    </li>
+    {{/each}}
+</ul>
+<ul>
+    {{#each wish-list}}
+    <li>
+        <a href="/wish-list/{{userId}}">
+        </a>
+    </li>
+    {{/each}}
+</ul>

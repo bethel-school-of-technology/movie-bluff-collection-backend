@@ -1,0 +1,25 @@
+<h1>Edit Owned Movie:</h1>
+
+<form id="editOwnedMovie" name="editOwnedMovie" method="POST" action="/owned-movie/">
+    <div>
+        <label for="name">Owned movie: </label>
+        <input type="checkbox" name="owned movie" id="owned" value=true>
+
+    </div>
+
+    <div>
+        <button type="submit">Update</button>
+    </div>
+
+</form>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    function onDelete() {
+        $.ajax({
+            url: '/owned-movies/{{UserId}}/delete',
+            method: 'DELETE', complete: () => window.location = "/owned-movies"
+        })
+    }
+</script>
+<button (click)="goBack()">Go Back</button>
+<button class="delete" title="delete owned movie" (click)="onDelete(owned-movie)">Delete</button>
