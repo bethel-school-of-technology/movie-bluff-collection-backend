@@ -6,6 +6,7 @@ var logger = require('morgan');
 var models = require('./models');
 var cors = require("cors");
 
+
 var usersRouter = require('./routes/users');
 var ownedMoviesRouter = require('./routes/owned-movies');
 var watchedMoviesRouter = require('./routes/watched-movies');
@@ -18,11 +19,19 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// be sure to change to url setting from aws. Api needs router
+app.use(cors({ origin: "http://localhost:4200", credentials: true })); 
+
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   next();
+// });
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:4200", credentials: true })); 
 app.use('/users', usersRouter);
 app.use('/owned-movies', ownedMoviesRouter);
 app.use('/watched-movies', watchedMoviesRouter);

@@ -105,7 +105,7 @@ router.delete('/:id', function (req, res, next) {
                 where: { imdbId: imdbId }
             }
         )
-        .then(() => res.status(200).json('successful'));
+        .then(() => res.status(200).json('Delete successful'));
 });
 
 module.exports = router;

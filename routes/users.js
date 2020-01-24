@@ -52,38 +52,7 @@ router.post('/login', function (req, res, next) {
     }
   });
 });
-// //show homepage, but movies are not showing
-// router.get('/homepage', function (req, res, next) {
-//   let token = req.cookies.jwt;
-//   if (token) {
-//     authService.verifyUser(token)
-//       .then(user => {
-//         if (user) {
-//           models.users
-//             .findAll({
-//               where: { userId: user.userId },
-//               // include: [{ model: userMovies }],
 
-
-//             })
-//             .then(result =>
-//               res.render('homepage', {
-//                 firstName: user.firstName,
-//                 lastName: user.lastName,
-//                 email: user.email,
-//                 userMovies: result,
-//                 user: result[0],
-//               }));
-//         } else {
-//           res.status(401);
-//           res.json('User not found');
-//         }
-//       });
-//   } else {
-//     res.status(401);
-//     res.json('Must be logged in');
-//   }
-// });
 
 // logout
 
