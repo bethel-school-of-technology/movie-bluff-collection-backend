@@ -3,6 +3,13 @@
         "movies": {
             "tableName": "movies",
             "schema": {
+                "id": {
+                    "autoIncrement": true,
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "imdbId": {
                     "primaryKey": true,
                     "field": "imdbId",
@@ -32,6 +39,13 @@
         "userMovies": {
             "tableName": "userMovies",
             "schema": {
+                "id": {
+                    "autoIncrement": true,
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "userId": {
                     "field": "userId",
                     "unique": "userMovies_userId_imdbId_unique",
