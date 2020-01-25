@@ -23,6 +23,13 @@ var migrationCommands = [{
         params: [
             "movies",
             {
+                "id": {
+                    "type": Sequelize.INTEGER,
+                    "field": "id",
+                    "primaryKey": true,
+                    "allowNull": false,
+                    "autoIncrement": true
+                },
                 "imdbId": {
                     "type": Sequelize.STRING,
                     "field": "imdbId",
@@ -108,6 +115,13 @@ var migrationCommands = [{
         params: [
             "userMovies",
             {
+                "id": {
+                    "type": Sequelize.INTEGER,
+                    "field": "id",
+                    "primaryKey": true,
+                    "allowNull": false,
+                    "autoIncrement": true
+                },
                 "userId": {
                     "type": Sequelize.INTEGER,
                     "onUpdate": "CASCADE",
