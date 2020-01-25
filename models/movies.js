@@ -2,7 +2,12 @@
 
 module.exports = (sequelize, DataTypes) => {
   var movies = sequelize.define('movies', {
-
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
     imdbId: {
       type: DataTypes.STRING,
       primaryKey: true
